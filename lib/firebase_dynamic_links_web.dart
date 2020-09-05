@@ -8,7 +8,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:http/http.dart' as http;
 
-/// A Calculator.
 class FirebaseDynamicLinksWebPlugin {
 
     static void registerWith(Registrar registrar) {
