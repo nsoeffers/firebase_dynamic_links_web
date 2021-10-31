@@ -2,7 +2,6 @@ library firebase_dynamic_links_web;
 
 import 'dart:async';
 import 'dart:convert';
-import 'dart:js';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
@@ -14,7 +13,7 @@ class FirebaseDynamicLinksWebPlugin {
         final MethodChannel channel = MethodChannel(
             'plugins.flutter.io/firebase_dynamic_links',
             const StandardMethodCodec(),
-            registrar.messenger
+            registrar
         );
         final FirebaseDynamicLinksWebPlugin instance = FirebaseDynamicLinksWebPlugin();
         channel.setMethodCallHandler(instance.handleMethodCall);
@@ -47,7 +46,9 @@ class FirebaseDynamicLinksWebPlugin {
 
     _shortenUrl(params) async {
         final apiKey = 'AIzaSyD_PbghcLOA1w1zj5UZtBqsc9FdjBY1DYQ';
-        final url = 'https://firebasedynamiclinks.googleapis.com/v1/shortLinks?key=${apiKey}';
+        final url = Uri.https('firebasedynamiclinks.googleapis.com',
+          '/v1/shortLinks',
+          { 'key': apiKey} );
         final body = {
             "longDynamicLink": params["url"],
             if (params["dynamicLinkParametersOptions"] != null ) "suffix": {
