@@ -1,7 +1,6 @@
 name: firebase_dynamic_links_web
 description: A web implementation for the firebase dynamic links plugin
 version: 0.0.1
-author:
 homepage:
 
 environment:
